@@ -2,9 +2,10 @@ body{
     
     background-size: cover ;
     background-position: center;
-  background: linear-gradient(45deg, #ff512f, #dd2476);
+    background: linear-gradient(45deg, #ff512f, #dd2476);
  
 }
+
 nav ul{
     display: flex;
     gap: 100px;
@@ -38,16 +39,49 @@ p{
     font-family:'Times New Roman', Times, serif;
     }
 
-.Logo img{
-    border-radius: 8px;
-  
 
-}
-.Logo{
+
+
+.Logo img{
     display: flex;
-    justify-content: left;
-    align-items: left;
-    width: 200px;
-    height: 100px;
-    margin: 200px,30px,0,0;
+    width: 100px;
+    height: 50px;
+    margin: 10px 20px 0px 30px;
+    border-radius: 50px;
+}
+nav{
+    position: fixed;
+    justify-content: center;
+    padding: 80px;
+    margin: 20px;
+}
+.header{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    padding-bottom: 300px;
+}
+.sentence{
+    font-size: 100px;
+    text-align: center;
+    margin-top: 500px;
+    margin-bottom: 100px;
+   
+}
+.sentence :hover{
+    font-weight: bold;
+    color: aliceblue;
+    font-size: 40   px;
+    transition: 10;
+    opacity: 5;
+    animation: fadeInUp 1s ease-out forwards;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(60px) rotate(360deg);
+  }
 }
