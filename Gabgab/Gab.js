@@ -43,12 +43,15 @@ else{
     console.log(`insuficient stock ${this.#stock}`);
 }
 }
-SeeStock(accountname){
+SeeStock(accountname,index){
 const myinventory = [accountname];
 for(let item of myinventory){
     console.log(`${item.name} | ${item.price} | ${item.gstock}`)
+
 }
+
 }
+
 }
 let myaccount;
 
@@ -64,4 +67,5 @@ myaccount.SeeStock(myaccount);
 const secondaccount = new product("SmartPhone",500,10);
 secondaccount.purchase(2)
 console.log(secondaccount.gstock);
-secondaccount.SeeStock(secondaccount);
+secondaccount.SeeStock(secondaccount,1);
+
