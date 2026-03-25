@@ -3,16 +3,16 @@ class User {
   #Middlename;
   #Lastname;
   #birthdate;
-  #Nationalism;
+  #Nationality;
 
-  constructor(Firstname, Middlename, Lastname, birthdate, Nationalism) {
+  constructor(Firstname, Middlename, Lastname, birthdate, Nationality) {
     
     if (
       typeof Firstname !== "string" ||
       typeof Lastname !== "string" ||
       typeof Middlename !== "string" ||
       typeof birthdate !== "string" ||
-      typeof Nationalism !== "string"
+      typeof Nationality !== "string"
     ) {
       throw new Error("attributes must be String");
     }
@@ -20,7 +20,7 @@ class User {
     this.#Lastname = Lastname;
     this.#Middlename = Middlename;
     this.#birthdate = birthdate;
-    this.#Nationalism = Nationalism;
+    this.#Nationality = Nationality;
 
   }
 
@@ -38,8 +38,8 @@ class User {
   get GetFullname() {
     return `${this.#Firstname} ${this.#Middlename} ${this.#Lastname}`;
   }
-  get GetNationalism() {
-    return this.#Nationalism;
+  get GetNationality() {
+    return this.#Nationality;
   }
 }
 
