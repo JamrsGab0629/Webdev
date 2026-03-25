@@ -41,6 +41,9 @@ class User {
   get GetNationality() {
     return this.#Nationality;
   }
+  get GetLastname(){
+    return this.#Lastname;
+  }
   toJSON(){
     return{
     Firstname: this.#Firstname,

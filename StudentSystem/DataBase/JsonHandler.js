@@ -2,7 +2,7 @@ import fs from "fs/promises";
 
 export default class JsonHandler {
   #file;
-  constructor(file = "database.json") {
+  constructor(file = "./DataBase/database.json") {
     this.#file = file;
   }
   async save(data) {

@@ -1,8 +1,8 @@
-
 import Scanner from "./Scanner.js";
-import StudentRecord from "./StudentRecord.js";
-import AddressDto from "./AddressDto.js";
-import StudentDto from "./StudentDto.js";
+import StudentRecord from "../Services/StudentRecord.js";
+import AddressDto from "../Dto/AddressDto.js";
+import StudentDto from "../Dto/StudentDto.js";
+import { parse } from "node:path";
 
 class Tui {
   #record;
@@ -13,9 +13,8 @@ class Tui {
   async StudentRegister() {
     const sc = new Scanner();
     let user = "";
-      await this.#record.initialize();
+    await this.#record.initialize();
     do {
-    
       this.Menu();
 
       user = await sc.nextline("Enter what you want: ");
@@ -63,25 +62,44 @@ class Tui {
           console.log(`Error the list was empty ${err.message}`);
           await sc.nextline("Please enter to continue");
         }
+      } else if (user === "4") {
+        const lastname = await sc.nextline("Enter the lastname: ");
+        this.#record.SearchStudent(lastname);
+      } else if (user === "5") {
+        try {
+          const index = await sc.nextline(
+            "Enter the index of the Student that you want to delete",
+          );
+          const targetinput = parseInt(index) - 1;
+
+          const deleted = this.#record.DeleteStuds(targetinput);
+
+          await this.#record.persist();
+          console.log(`Youve successfull delete it ${deleted.GetFullname}`);
+        } catch (err) {
+          console.log(`Can not find it ${err.message}`);
+          await sc.nextline("Enter to continue");
+        }
       }
-    } while (user !== "4");
+    } while (user !== "6");
     sc.Close();
   }
 
   GetStudentinfo(newstud) {
-    
     return `Name: ${newstud.Firstname}  ${newstud.Middlename} ${newstud.Lastname} Nationality: ${newstud.Nationality}`;
-}
+  }
 
   GetAdressinfo(ad) {
-   return `Country: ${ad.Country} Municipality: ${ad.Municipality} City: ${ad.City} brgy ${ad.Brgy}`;
+    return `Country: ${ad.Country} Municipality: ${ad.Municipality} City: ${ad.City} brgy ${ad.Brgy}`;
   }
 
   Menu() {
     console.log("1.Record a student");
     console.log("2.Check how many student are there: ");
     console.log("3.Check all of the students: ");
-    console.log("4.Exit: ");
+    console.log("4.Search the Student by Lastname");
+    console.log("5.Delete Student: ");
+    console.log("6.Exit");
   }
 }
 
