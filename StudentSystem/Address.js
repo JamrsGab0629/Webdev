@@ -5,7 +5,7 @@ class Address{
     #City
     #Brgy
 
-    constructor(Country,Municipality,City,Brgy){
+    constructor(Country = "",Municipality = "",City = "",Brgy = ""){
         if(typeof Country !== "string" || 
             typeof Municipality !== "string" ||
             typeof City !== "string" ||

@@ -14,6 +14,7 @@ class Tui {
     const sc = new Scanner();
     let user = "";
     do {
+      this.#record.initialize();
       this.Menu();
 
       user = await sc.nextline("Enter what you want: ");
@@ -49,6 +50,9 @@ class Tui {
         const address = this.GetAdressinfo(ad);
         console.log(address);
         this.#record.AddStudent(newstud,ad);
+
+        this.#record.persist();
+        
       }
       else if(user === "2"){
         const total = this.#record.GetTotalStudent;

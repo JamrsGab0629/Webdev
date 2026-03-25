@@ -5,7 +5,7 @@ class User {
   #birthdate;
   #Nationality;
 
-  constructor(Firstname, Middlename, Lastname, birthdate, Nationality) {
+  constructor(Firstname = "", Middlename = "", Lastname = "", birthdate = "", Nationality = "") {
     
     if (
       typeof Firstname !== "string" ||
