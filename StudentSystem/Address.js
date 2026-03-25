@@ -32,6 +32,9 @@ class Address{
     get getBrgy(){
         return this.#Brgy;
     }
+    get FullAddress(){
+         return `Country ${this.#Country} Municipality: ${this.#Municipality} City ${this.#City} Brgy ${this.#Brgy}`;
+    }
 }
 
 
