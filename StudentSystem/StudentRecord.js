@@ -24,8 +24,17 @@ export default class StudentRecord{
         const data = await this.#db.load();
         if(!data) return;
 
-        this.#Students = data.student.map(s => Object.assign(new User(),s));
-        this.#Address = data.address.map(a => Object.assign(new Address(),a));
+        this.#Students = data.student.map(s => {
+            return new User(s.Firstname, 
+        s.Lastname, 
+        s.Middlename, 
+        s.Birthdate, 
+        s.Nationality); });
+        this.#Address = data.address.map(a => {
+            return new Address(a.Country,a.Municipality,a.City,a.Brgy);
+        });
+
+        this.#TotalStudents = this.#Students.length;
 
     }
     

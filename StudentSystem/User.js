@@ -36,10 +36,19 @@ class User {
     return this.#birthdate;
   }
   get GetFullname() {
-    return `${this.#Firstname} ${this.#Middlename} ${this.#Lastname}`;
+    return `Fullname ${this.#Firstname} ${this.#Middlename} ${this.#Lastname} || `;
   }
   get GetNationality() {
     return this.#Nationality;
+  }
+  toJSON(){
+    return{
+    Firstname: this.#Firstname,
+    Middlename: this.#Middlename,
+    Lastname: this.#Lastname,
+    birthdate: this.#birthdate,
+    Nationality: this.#Nationality
+    }
   }
 }
 

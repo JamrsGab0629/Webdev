@@ -1,20 +1,21 @@
-import User from "./User.js";
-import Address from "./Address.js";
+
 import Scanner from "./Scanner.js";
 import StudentRecord from "./StudentRecord.js";
+import AddressDto from "./AddressDto.js";
+import StudentDto from "./StudentDto.js";
 
 class Tui {
-    #record
+  #record;
   constructor() {
     this.#record = new StudentRecord();
-    
   }
 
   async StudentRegister() {
     const sc = new Scanner();
     let user = "";
+      await this.#record.initialize();
     do {
-      this.#record.initialize();
+    
       this.Menu();
 
       user = await sc.nextline("Enter what you want: ");
@@ -27,7 +28,7 @@ class Tui {
         );
         const Nationality = await sc.nextline("Enter your Nationailty: ");
 
-        const newstud = new User(
+        const newstud = new StudentDto(
           Firstname,
           Middlename,
           Lastname,
@@ -46,25 +47,21 @@ class Tui {
         const City = await sc.nextline("What City are you in: ");
         const Brgy = await sc.nextline("What brgy are you in: ");
 
-        const ad = new Address(Country, Municipality, City, Brgy);
+        const ad = new AddressDto(Country, Municipality, City, Brgy);
         const address = this.GetAdressinfo(ad);
         console.log(address);
-        this.#record.AddStudent(newstud,ad);
+        this.#record.AddStudent(newstud, ad);
 
-        this.#record.persist();
-        
-      }
-      else if(user === "2"){
+        await this.#record.persist();
+      } else if (user === "2") {
         const total = this.#record.GetTotalStudent;
         console.log(total);
-      }
-      else if(user === "3"){
-        try{
-        this.#record.ListOfStudents;}
-        catch(err){
-           console.log(`Error the list was empty ${err.message}`);
-           await sc.nextline("Please enter to continue");
-
+      } else if (user === "3") {
+        try {
+          this.#record.ListOfStudents;
+        } catch (err) {
+          console.log(`Error the list was empty ${err.message}`);
+          await sc.nextline("Please enter to continue");
         }
       }
     } while (user !== "4");
@@ -72,11 +69,12 @@ class Tui {
   }
 
   GetStudentinfo(newstud) {
-    return `Name: ${newstud.GetFullname} Age: ${newstud.GetAge} Nationality: ${newstud.GetNationality}`;
-  }
+    
+    return `Name: ${newstud.Firstname}  ${newstud.Middlename} ${newstud.Lastname} Nationality: ${newstud.Nationality}`;
+}
 
   GetAdressinfo(ad) {
-    return `Country: ${ad.getCountry} Municipality: ${ad.getMunicipality} City: ${ad.getCity} Brgy: ${ad.getBrgy}`;
+   return `Country: ${ad.Country} Municipality: ${ad.Municipality} City: ${ad.City} brgy ${ad.Brgy}`;
   }
 
   Menu() {
