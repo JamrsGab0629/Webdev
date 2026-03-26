@@ -2,6 +2,7 @@ import Scanner from "./Scanner.js";
 import StudentRecord from "../Services/StudentRecord.js";
 import AddressDto from "../Dto/AddressDto.js";
 import StudentDto from "../Dto/StudentDto.js";
+import GradesDto from "../Dto/GradesDto.js";
 import { parse } from "node:path";
 
 class Tui {
@@ -49,9 +50,17 @@ class Tui {
         const ad = new AddressDto(Country, Municipality, City, Brgy);
         const address = this.GetAdressinfo(ad);
         console.log(address);
-        this.#record.AddStudent(newstud, ad);
+
+        const prelim = await sc.nextline("Enter your Preliminary grades: ");
+        const midterm = await sc.nextline("Enter your Midterm Grades: ");
+        const prefinal = await sc.nextline("Enter your prefinals: ");
+        const final = await sc.nextline("Enter your final grades: ");
+
+        const g =  new GradesDto(prelim,midterm,prefinal,final);
+        this.#record.AddStudent(newstud, ad,g);
 
         await this.#record.persist();
+
       } else if (user === "2") {
         const total = this.#record.GetTotalStudent;
         console.log(total);
@@ -64,7 +73,7 @@ class Tui {
         }
       } else if (user === "4") {
         const lastname = await sc.nextline("Enter the lastname: ");
-        this.#record.SearchStudent(lastname);
+        await this.#record.SearchStudent(lastname);
       } else if (user === "5") {
         try {
           const index = await sc.nextline(
