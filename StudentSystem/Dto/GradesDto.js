@@ -1,4 +1,4 @@
-export default class GradesDto{
+class GradesDto{
     constructor(Prelim,Midterm,Prefinal,Final){
 
         const p = Number(Prelim);
@@ -17,3 +17,4 @@ export default class GradesDto{
 
 
 }
+module.exports = GradesDto;

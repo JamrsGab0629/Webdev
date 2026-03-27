@@ -1,6 +1,6 @@
 const mysql = require('mysql2/promise');
 
-class DataBase {
+class Database {
     static connection = null;
 
     static async getConnection() {
@@ -10,11 +10,11 @@ class DataBase {
                     host: 'localhost',
                     user: 'root', 
                     password: '', 
-                    database: 'school'
+                    database: 'student_system'
                 });
-                console.log("Successfully connected to the 'school' database!");
+                console.log("Connected to MySQL via Singleton.");
             } catch (err) {
-                console.log("Database connection failed!");
+                console.error("Database connection failed:", err.message);
                 throw err;
             }
         }
@@ -22,5 +22,4 @@ class DataBase {
     }
 }
 
-
-module.exports = DataBase;
+module.exports = Database;

@@ -46,4 +46,4 @@ class Address{
 }
 
 
-export default Address;
+module.exports = Address;

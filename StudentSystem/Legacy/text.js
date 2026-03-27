@@ -1,4 +1,4 @@
-const Database = require('./Database.js');
+const Database = require('../DataBase/Database.js');
 
 async function testConnection() {
     try {

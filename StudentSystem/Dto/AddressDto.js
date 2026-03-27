@@ -1,4 +1,4 @@
-export default class AddressDto{
+ class AddressDto{
     constructor(Country,Municipality,City,Brgy){
         this.Country = Country;
         this.Municipality = Municipality;
@@ -6,3 +6,4 @@ export default class AddressDto{
         this.Brgy = Brgy;
     }
 }
+module.exports = AddressDto;

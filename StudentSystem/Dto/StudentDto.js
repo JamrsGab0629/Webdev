@@ -1,4 +1,4 @@
-export default class StudentDto{
+ class StudentDto{
     constructor(Firstname,Middlename,Lastname,Birthdate,Nationality){
         this.Firstname = Firstname;
         this.Middlename = Middlename;
@@ -8,3 +8,4 @@ export default class StudentDto{
 
     }
 }
+module.exports = StudentDto;

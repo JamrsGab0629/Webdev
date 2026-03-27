@@ -1,6 +1,6 @@
 
-import { createInterface } from 'node:readline/promises';
-import { stdin as input , stdout as output } from "node:process";
+const { createInterface } = require('node:readline/promises');
+const { stdin: input, stdout: output } = require('node:process');
 
 
 class Scanner{
@@ -18,6 +18,6 @@ Close(){
 }
 }
 
-export default Scanner;
+module.exports = Scanner;
 
 
