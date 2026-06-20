@@ -1,35 +1,52 @@
-const Scanner = require("../Ui/Scanner");
+board = [
+    [5, 3, 0, 0, 0, 0, 0, 0, 0],
+    [6, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 9, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
 
-class test{
-   #tui;
-   #prelim;
-   #midterm;
-   #prefinal;
-   #final;
-   constructor(){
-      this.#tui = new Scanner();
-      
-   }
-   Total = () => {
-      let Result = Number(this.#prelim) + Number(this.#midterm) + Number(this.#prefinal) + Number(this.#final);
-      return Result = Result / 4;
-       
+def isValid(row, col, num):
+    for i in range(9):
+        if board[row][i] == num or board[i][col] == num:
+            return False
 
-   }
-   async Menu(){
-      this.#prelim = await this.#tui.nextline("Enter pre");
-      this.#midterm  = await this.#tui.nextline("Enter mid");
-      this.#prefinal = await this.#tui.nextline("Enter pref");
-      this.#final = await this.#tui.nextline("Enter final");
-      
-      let result = this.Total();
+    c = col % 3
+    r = row % 3
 
-      console.log(result);
-     
-      this.#tui.Close();
-   }
-  
-}
- const t = new test();
+    for i in range(3):
+        for j in range(3):
+            if board[row - r + i][col - c + j] == num:
+                return False
 
- t.Menu();
+    return True
+
+def solve():
+    for i in range(9):
+        for j in range(9):
+            if board[i][j] == 0:
+                for k in range(1, 10):
+                    if isValid(i, j, k):
+                        board[i][j] = k
+                        
+                        if solve(): 
+                            return True
+
+                        board[i][j] = 0
+                return False
+    return True
+
+if __name__ == "__main__":
+    if solve():
+        print("Solved")
+    else:
+        print("Not Solved")
+
+    for i in range(9):
+        for j in range(9):
+            print(board[i][j], end=" ")
+        print()
