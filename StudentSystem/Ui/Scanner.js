@@ -19,6 +19,6 @@ Close(){
 }
 
 module.exports = Scanner;
-// apaka pangit ko talaga sobra tattatata
+// apaka pangit ko talaga sobra tattatata ra fqsfsafasf
 
 
