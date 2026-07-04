@@ -19,5 +19,6 @@ Close(){
 }
 
 module.exports = Scanner;
+//pogi ni gab
 
 
