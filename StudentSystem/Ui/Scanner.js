@@ -19,6 +19,6 @@ Close(){
 }
 
 module.exports = Scanner;
-//pogi ni gab at ni xep
+// apaka pangit ko
 
 
