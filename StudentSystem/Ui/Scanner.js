@@ -19,6 +19,6 @@ Close(){
 }
 
 module.exports = Scanner;
-// apaka pangit ko
+// apaka pangit ko talaga sobra
 
 
